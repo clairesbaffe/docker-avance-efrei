@@ -101,3 +101,12 @@ part3-conteneur_nul-1         debian    "sleep 9999"   conteneur_nul         42 
 
 ## II. A working meow-api
 
+```bash
+curl localhost:8000/users
+[{"favorite_insult":"Tu as le charisme d\u00e2\u20ac\u2122un slip humide.","id":1,"name":"Alice"},{"favorite_insult":"T\u00e2\u20ac\u2122es pas b\u00c3\u00aate, t\u00e2\u20ac\u2122es... tr\u00c3\u00a8s conceptuel.","id":2,"name":"Bob"},{"favorite_insult":"Si la b\u00c3\u00aatise \u00c3\u00a9tait un sport, tu serais m\u00c3\u00a9daill\u00c3\u00a9.","id":3,"name":"Charlie"},{"favorite_insult":"M\u00c3\u00aame Google ne te trouve pas int\u00c3\u00a9ressant.","id":4,"name":"Diana"}]
+```
+
+```bash
+curl localhost:8000/user/3
+{"favorite_insult":"Si la b\u00c3\u00aatise \u00c3\u00a9tait un sport, tu serais m\u00c3\u00a9daill\u00c3\u00a9.","id":3,"name":"Charlie"}
+```
