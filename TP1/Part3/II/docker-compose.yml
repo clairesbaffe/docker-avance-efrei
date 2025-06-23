@@ -1,0 +1,29 @@
+services:
+  app:
+    image: meow-api
+    container_name: meow-api-app
+    restart: always
+    environment:
+      LISTEN_PORT: 8000
+      DB_HOSTNAME: db
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image: mysql
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: meow
+      MYSQL_USER: meow
+      MYSQL_PASSWORD: meow
+      MYSQL_DATABASE: meow
+    volumes: 
+      - ./seed.sql:/docker-entrypoint-initdb.d/seed.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pmeow"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
